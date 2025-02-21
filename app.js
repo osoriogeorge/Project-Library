@@ -8,13 +8,15 @@ newBookBtn.addEventListener("click", (e) => {
   libraryForm.style.display = "flex";
 });
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 
-  function toggleRead() {
+  toggleRead() {
     this.read = !this.read;
   }
 }
@@ -55,15 +57,15 @@ function displayBooks() {
     let readBackgroundColor = book.read ? "lightgreen" : "red";
 
     bookCard.innerHTML = `
-            <h3>${book.title}</h3>
-            <p>Autor: ${book.author}</p>
-            <p>Páginas: ${book.pages}</p>
-            <p>Readed: <span style="background-color: ${readBackgroundColor};">${readStatus}</span></p>
-        `;
+      <h3>${book.title}</h3>
+      <p>Autor: ${book.author}</p>
+      <p>Páginas: ${book.pages}</p>
+      <p>Leído: <span style="background-color: ${readBackgroundColor};">${readStatus}</span></p>
+    `;
 
     const deleteBookBtn = document.createElement("button");
     deleteBookBtn.classList.add("delete-book-btn");
-    deleteBookBtn.textContent = "Delete";
+    deleteBookBtn.textContent = "Eliminar";
     deleteBookBtn.dataset.index = i;
 
     deleteBookBtn.addEventListener("click", () => {
@@ -75,7 +77,7 @@ function displayBooks() {
 
     const readButton = document.createElement("button");
     readButton.classList.add("toggle-read-btn");
-    readButton.textContent = "Toggle Read";
+    readButton.textContent = "Cambiar Leído";
     readButton.dataset.index = i;
     readButton.addEventListener("click", () => {
       const index = parseInt(readButton.dataset.index);
