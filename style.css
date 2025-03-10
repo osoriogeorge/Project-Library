@@ -79,6 +79,16 @@ h1 {
   font-size: 1rem;
 }
 
+.libraryForm input:invalid,
+.libraryForm select:invalid {
+  border-color: red;
+}
+
+.libraryForm input:valid,
+.libraryForm select:valid {
+  border-color: green;
+}
+
 .libraryForm input:focus,
 .libraryForm select:focus,
 .libraryForm textarea:focus {
